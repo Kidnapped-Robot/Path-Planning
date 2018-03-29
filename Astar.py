@@ -9,6 +9,25 @@ def nullHeuristic(state, problem=None):
 	"""
 	return 0
 
+def manhattanHeuristic(position, problem, info={}):
+
+    "The Manhattan distance heuristic for a PositionSearchProblem"
+
+    xy1 = position
+    xy2 = problem.goal
+
+    return abs(xy1[0] - xy2[0]) + abs(xy1[1] - xy2[1])
+
+
+def euclideanHeuristic(position, problem, info={}):
+
+    "The Euclidean distance heuristic for a PositionSearchProblem"
+
+    xy1 = position
+    xy2 = problem.goal
+    
+    return ( (xy1[0] - xy2[0]) ** 2 + (xy1[1] - xy2[1]) ** 2 ) ** 0.5
+
 
 def aStarSearch(problem, heuristic=nullHeuristic):
     
