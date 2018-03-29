@@ -14,7 +14,7 @@ def manhattanHeuristic(position, problem, info={}):
     "The Manhattan distance heuristic for a PositionSearchProblem"
 
     xy1 = position
-    xy2 = problem.goal
+    xy2 = problem.getGoal()
 
     return abs(xy1[0] - xy2[0]) + abs(xy1[1] - xy2[1])
 
@@ -24,7 +24,7 @@ def euclideanHeuristic(position, problem, info={}):
     "The Euclidean distance heuristic for a PositionSearchProblem"
 
     xy1 = position
-    xy2 = problem.goal
+    xy2 = problem.getGoal()
     
     return ( (xy1[0] - xy2[0]) ** 2 + (xy1[1] - xy2[1]) ** 2 ) ** 0.5
 
@@ -85,10 +85,10 @@ def aStarSearch(problem, heuristic=nullHeuristic):
 if(__name__ == "__main__"):
     
     start = (0, 0)    
-    obstacles = [(2, 1), (1, 2), (2, 2)]
-    goal = (3, 3)
+    obstacles = [(2, 1), (3, 1), (1, 3)]
+    goal = (4, 4)
     
-    problem = SearchProblem(start, goal, obstacles, 4)
+    problem = SearchProblem(start, goal, obstacles, 5)
     
     print(aStarSearch(problem))
     
