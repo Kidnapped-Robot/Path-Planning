@@ -61,6 +61,10 @@ class SearchProblem:
     def isGoalState(self, state):
 
         return (state == self.goal)
+
+    def getGoal(self):
+
+    	return self.goal
     
     def directionToVector(self, action):
         
