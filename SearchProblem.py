@@ -92,7 +92,10 @@ class SearchProblem:
             nextstate = (nextx, nexty)
             
             if( nextstate not in self.obstacles and nextstate not in self.walls):
+
                 cost = self.costFn(nextstate)
+                if(action in ["SouthEast", "SouthWest", "NorthEast", "NorthWest"]):
+                	cost = 0.5
                 successors.append((nextstate, action, cost))
                 
                 
