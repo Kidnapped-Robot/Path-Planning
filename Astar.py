@@ -29,7 +29,7 @@ def euclideanHeuristic(position, problem, info={}):
     return ( (xy1[0] - xy2[0]) ** 2 + (xy1[1] - xy2[1]) ** 2 ) ** 0.5
 
 
-def aStarSearch(problem, heuristic=nullHeuristic):
+def aStarSearch(problem, heuristic=manhattanHeuristic):
     
     """Search the node that has the lowest combined cost and heuristic first."""
 
@@ -73,11 +73,12 @@ def aStarSearch(problem, heuristic=nullHeuristic):
                     sub_node["heuristic"] = heuristic(sub_node["state"], problem)
                     priority_q.push(sub_node, sub_node["goal"] + sub_node["heuristic"])
         
-
+        
     path = []
     while(node["action"] != None):
         path.insert(0, node["action"])
         node = node["parent"]
+
 
     return path
 
@@ -85,7 +86,7 @@ def aStarSearch(problem, heuristic=nullHeuristic):
 if(__name__ == "__main__"):
     
     start = (0, 0)    
-    obstacles = [(2, 1), (3, 1), (1, 3)]
+    obstacles = [(3, 1), (1, 2), (3, 3)]
     goal = (4, 4)
     
     problem = SearchProblem(start, goal, obstacles, 5)

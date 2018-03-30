@@ -85,7 +85,7 @@ class SearchProblem:
         successors = []
         x, y = state
           
-        for action in ["South", "North", "East", "West", "SouthEast", "SouthWest", "NorthEast", "NorthWest"]:
+        for action in ["South", "North", "East", "West"]:
           
             dx, dy = self.directionToVector(action)
             nextx, nexty = int(x + dx), int(y + dy)
@@ -94,8 +94,6 @@ class SearchProblem:
             if( nextstate not in self.obstacles and nextstate not in self.walls):
 
                 cost = self.costFn(nextstate)
-                if(action in ["SouthEast", "SouthWest", "NorthEast", "NorthWest"]):
-                	cost = 0.5
                 successors.append((nextstate, action, cost))
                 
                 
